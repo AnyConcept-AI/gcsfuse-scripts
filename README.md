@@ -1,9 +1,12 @@
 # gcsfuse-scripts
-Convenience scripts to manage gcsfuse-mounted files and folders
+Convenience scripts to manage gcsfuse-mounted files and directories of a GCP Storage bucket 
 
 https://cloud.google.com/storage/docs/cloud-storage-fuse/overview
 
-update_folders.sh - Please fill in `MOUNT_PT` and `BUCKET_NAME`
+This script helps with the problem that when copying many files in a storage bucket with the `gsutil -m cp -r` command and in other cases, the directory themselves might not have been created. They are then simply not shown when browsing the mounted storage bucket even though all the files exist. When working with deeply nested directory structures, it is a pain to create these directory entries manually, so this script simply finds those missing directories and creates them. It can therefore simply be run to make sure all the files that exist in the storage bucket can be found.
+
+Update Folders: Please fill in `MOUNT_PT` and `BUCKET_NAME`
+Usage: `./update_folders.sh [optional_path_to_subdirectory]`
 
 ```
 #!/bin/bash
