@@ -231,37 +231,3 @@ else
     echo "Operation cancelled."
 fi
 ```
-
-## How It Works
-1. The script first validates that all required parameters are provided
-2. It constructs the full bucket paths using the region codes
-3. Before proceeding, it verifies that both buckets exist and are accessible
-4. It shows a preview of the operation and asks for confirmation
-5. Upon confirmation:
-   - Copies all content from source to destination using `gsutil -m rsync`
-   - Runs the `update_folders.sh` script to ensure proper directory structure
-6. Error handling ensures the script fails gracefully if any operation fails
-
-## Improvements Made
-- Added comprehensive error handling
-- Added bucket existence validation
-- Made bucket prefix configurable
-- Added detailed usage information and examples
-- Improved path handling with wildcards
-- Added better progress feedback
-- Added proper quoting for variables
-- Added exit codes for error conditions
-
-## Dependencies
-This script requires:
-1. The `update_folders.sh` script (must be in the same directory)
-2. Google Cloud SDK with `gsutil` installed
-3. Appropriate permissions on both source and destination buckets
-
-## Notes
-- The script assumes bucket names follow the pattern: `anyconcept-{region}`
-- Modify the `BUCKET_PREFIX` variable if your bucket naming convention is different
-- The script requires write permissions on both source and destination buckets
-- `parallel`: GNU Parallel for parallel processing
-- Mounted Google Cloud Storage bucket
-- Appropriate permissions to create directories
